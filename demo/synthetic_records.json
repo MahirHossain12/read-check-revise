@@ -1,0 +1,638 @@
+[
+  {
+    "version": "python-hci-v1",
+    "mode": "demo",
+    "participant_id": "P01",
+    "sequence": 1,
+    "rounds": [
+      {
+        "topic": "lists",
+        "condition": "A",
+        "initial": 3,
+        "final": 2,
+        "judgments": [
+          "accurate",
+          "accurate"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 3,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": ""
+      },
+      {
+        "topic": "range",
+        "condition": "B",
+        "initial": 2,
+        "final": 2,
+        "judgments": [
+          "inaccurate",
+          "unsure"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 0,
+        "evidence_opened": true,
+        "source_link_opened": false,
+        "reflection": ""
+      },
+      {
+        "topic": "division",
+        "condition": "C",
+        "initial": 0,
+        "final": 3,
+        "judgments": [
+          "accurate",
+          "accurate"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 2,
+        "evidence_opened": true,
+        "source_link_opened": false,
+        "reflection": "Synthetic fixture"
+      }
+    ]
+  },
+  {
+    "version": "python-hci-v1",
+    "mode": "demo",
+    "participant_id": "P02",
+    "sequence": 2,
+    "rounds": [
+      {
+        "topic": "lists",
+        "condition": "A",
+        "initial": 2,
+        "final": 0,
+        "judgments": [
+          "accurate",
+          "unsure"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 0,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": ""
+      },
+      {
+        "topic": "division",
+        "condition": "C",
+        "initial": 3,
+        "final": 2,
+        "judgments": [
+          "unsure",
+          "accurate"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 0,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": "Synthetic fixture"
+      },
+      {
+        "topic": "range",
+        "condition": "B",
+        "initial": 3,
+        "final": 1,
+        "judgments": [
+          "unsure",
+          "unsure"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 0,
+        "evidence_opened": true,
+        "source_link_opened": false,
+        "reflection": ""
+      }
+    ]
+  },
+  {
+    "version": "python-hci-v1",
+    "mode": "demo",
+    "participant_id": "P03",
+    "sequence": 3,
+    "rounds": [
+      {
+        "topic": "range",
+        "condition": "C",
+        "initial": 0,
+        "final": 1,
+        "judgments": [
+          "unsure",
+          "accurate"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 0,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": "Synthetic fixture"
+      },
+      {
+        "topic": "lists",
+        "condition": "B",
+        "initial": 2,
+        "final": 1,
+        "judgments": [
+          "unsure",
+          "accurate"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 1,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": ""
+      },
+      {
+        "topic": "division",
+        "condition": "A",
+        "initial": 0,
+        "final": 2,
+        "judgments": [
+          "inaccurate",
+          "accurate"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 0,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": ""
+      }
+    ]
+  },
+  {
+    "version": "python-hci-v1",
+    "mode": "demo",
+    "participant_id": "P04",
+    "sequence": 4,
+    "rounds": [
+      {
+        "topic": "range",
+        "condition": "C",
+        "initial": 0,
+        "final": 3,
+        "judgments": [
+          "accurate",
+          "unsure"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 3,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": "Synthetic fixture"
+      },
+      {
+        "topic": "division",
+        "condition": "A",
+        "initial": 1,
+        "final": 0,
+        "judgments": [
+          "accurate",
+          "accurate"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 0,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": ""
+      },
+      {
+        "topic": "lists",
+        "condition": "B",
+        "initial": 3,
+        "final": 3,
+        "judgments": [
+          "inaccurate",
+          "unsure"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 2,
+        "evidence_opened": true,
+        "source_link_opened": false,
+        "reflection": ""
+      }
+    ]
+  },
+  {
+    "version": "python-hci-v1",
+    "mode": "demo",
+    "participant_id": "P05",
+    "sequence": 5,
+    "rounds": [
+      {
+        "topic": "division",
+        "condition": "B",
+        "initial": 0,
+        "final": 3,
+        "judgments": [
+          "inaccurate",
+          "accurate"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 1,
+        "evidence_opened": true,
+        "source_link_opened": false,
+        "reflection": ""
+      },
+      {
+        "topic": "lists",
+        "condition": "C",
+        "initial": 0,
+        "final": 0,
+        "judgments": [
+          "unsure",
+          "unsure"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 1,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": "Synthetic fixture"
+      },
+      {
+        "topic": "range",
+        "condition": "A",
+        "initial": 0,
+        "final": 3,
+        "judgments": [
+          "unsure",
+          "accurate"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 1,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": ""
+      }
+    ]
+  },
+  {
+    "version": "python-hci-v1",
+    "mode": "demo",
+    "participant_id": "P06",
+    "sequence": 6,
+    "rounds": [
+      {
+        "topic": "division",
+        "condition": "B",
+        "initial": 1,
+        "final": 3,
+        "judgments": [
+          "inaccurate",
+          "unsure"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 3,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": ""
+      },
+      {
+        "topic": "range",
+        "condition": "A",
+        "initial": 3,
+        "final": 0,
+        "judgments": [
+          "unsure",
+          "inaccurate"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 1,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": ""
+      },
+      {
+        "topic": "lists",
+        "condition": "C",
+        "initial": 1,
+        "final": 2,
+        "judgments": [
+          "inaccurate",
+          "unsure"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 2,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": "Synthetic fixture"
+      }
+    ]
+  },
+  {
+    "version": "python-hci-v1",
+    "mode": "demo",
+    "participant_id": "P07",
+    "sequence": 1,
+    "rounds": [
+      {
+        "topic": "lists",
+        "condition": "A",
+        "initial": 2,
+        "final": 3,
+        "judgments": [
+          "unsure",
+          "accurate"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 1,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": ""
+      },
+      {
+        "topic": "range",
+        "condition": "B",
+        "initial": 1,
+        "final": 1,
+        "judgments": [
+          "accurate",
+          "accurate"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 1,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": ""
+      },
+      {
+        "topic": "division",
+        "condition": "C",
+        "initial": 1,
+        "final": 0,
+        "judgments": [
+          "accurate",
+          "unsure"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 1,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": "Synthetic fixture"
+      }
+    ]
+  },
+  {
+    "version": "python-hci-v1",
+    "mode": "demo",
+    "participant_id": "P08",
+    "sequence": 2,
+    "rounds": [
+      {
+        "topic": "lists",
+        "condition": "A",
+        "initial": 2,
+        "final": 0,
+        "judgments": [
+          "accurate",
+          "inaccurate"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 0,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": ""
+      },
+      {
+        "topic": "division",
+        "condition": "C",
+        "initial": 3,
+        "final": 1,
+        "judgments": [
+          "unsure",
+          "inaccurate"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 3,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": "Synthetic fixture"
+      },
+      {
+        "topic": "range",
+        "condition": "B",
+        "initial": 2,
+        "final": 2,
+        "judgments": [
+          "accurate",
+          "accurate"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 1,
+        "evidence_opened": true,
+        "source_link_opened": false,
+        "reflection": ""
+      }
+    ]
+  },
+  {
+    "version": "python-hci-v1",
+    "mode": "demo",
+    "participant_id": "P09",
+    "sequence": 3,
+    "rounds": [
+      {
+        "topic": "range",
+        "condition": "C",
+        "initial": 1,
+        "final": 3,
+        "judgments": [
+          "unsure",
+          "accurate"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 0,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": "Synthetic fixture"
+      },
+      {
+        "topic": "lists",
+        "condition": "B",
+        "initial": 1,
+        "final": 3,
+        "judgments": [
+          "inaccurate",
+          "inaccurate"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 1,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": ""
+      },
+      {
+        "topic": "division",
+        "condition": "A",
+        "initial": 3,
+        "final": 1,
+        "judgments": [
+          "accurate",
+          "unsure"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 2,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": ""
+      }
+    ]
+  },
+  {
+    "version": "python-hci-v1",
+    "mode": "demo",
+    "participant_id": "P10",
+    "sequence": 4,
+    "rounds": [
+      {
+        "topic": "range",
+        "condition": "C",
+        "initial": 3,
+        "final": 2,
+        "judgments": [
+          "inaccurate",
+          "inaccurate"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 1,
+        "evidence_opened": true,
+        "source_link_opened": false,
+        "reflection": "Synthetic fixture"
+      },
+      {
+        "topic": "division",
+        "condition": "A",
+        "initial": 3,
+        "final": 3,
+        "judgments": [
+          "accurate",
+          "inaccurate"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 1,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": ""
+      },
+      {
+        "topic": "lists",
+        "condition": "B",
+        "initial": 3,
+        "final": 2,
+        "judgments": [
+          "accurate",
+          "accurate"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 3,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": ""
+      }
+    ]
+  },
+  {
+    "version": "python-hci-v1",
+    "mode": "demo",
+    "participant_id": "P11",
+    "sequence": 5,
+    "rounds": [
+      {
+        "topic": "division",
+        "condition": "B",
+        "initial": 3,
+        "final": 0,
+        "judgments": [
+          "unsure",
+          "unsure"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 0,
+        "evidence_opened": true,
+        "source_link_opened": false,
+        "reflection": ""
+      },
+      {
+        "topic": "lists",
+        "condition": "C",
+        "initial": 3,
+        "final": 3,
+        "judgments": [
+          "inaccurate",
+          "inaccurate"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 1,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": "Synthetic fixture"
+      },
+      {
+        "topic": "range",
+        "condition": "A",
+        "initial": 0,
+        "final": 1,
+        "judgments": [
+          "accurate",
+          "unsure"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 3,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": ""
+      }
+    ]
+  },
+  {
+    "version": "python-hci-v1",
+    "mode": "demo",
+    "participant_id": "P12",
+    "sequence": 6,
+    "rounds": [
+      {
+        "topic": "division",
+        "condition": "B",
+        "initial": 1,
+        "final": 0,
+        "judgments": [
+          "unsure",
+          "unsure"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 3,
+        "evidence_opened": true,
+        "source_link_opened": false,
+        "reflection": ""
+      },
+      {
+        "topic": "range",
+        "condition": "A",
+        "initial": 1,
+        "final": 2,
+        "judgments": [
+          "unsure",
+          "accurate"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 1,
+        "evidence_opened": false,
+        "source_link_opened": false,
+        "reflection": ""
+      },
+      {
+        "topic": "lists",
+        "condition": "C",
+        "initial": 3,
+        "final": 1,
+        "judgments": [
+          "accurate",
+          "unsure"
+        ],
+        "reason": "Synthetic fixture",
+        "transfer": 2,
+        "evidence_opened": true,
+        "source_link_opened": false,
+        "reflection": "Synthetic fixture"
+      }
+    ]
+  }
+]

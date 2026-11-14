@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evaluating AI explanations</title>
+<style>
+:root {
+  color-scheme: light;
+  --paper: #f5f3ee; --surface: #fff; --ink: #182820; --muted: #506258;
+  --line: #d5ded6; --forest: #153f33; --accent: #bdeb82; --code: #eaf0e9;
+  font-family: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); line-height: 1.55; }
+header { background: var(--forest); color: #fff; }
+.banner { max-width: 784px; margin: auto; padding: 2rem 1.25rem 2.3rem; }
+.brand { color: var(--accent); font-size: .8rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
+h1 { margin: .25rem 0 0; font-size: clamp(1.8rem, 5vw, 2.65rem); line-height: 1.15; letter-spacing: -.035em; }
+main { max-width: 784px; margin: auto; padding: 1.5rem 1.25rem 3rem; }
+nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .55rem; margin-bottom: 1.1rem; }
+nav span { border-top: 3px solid #cbd5cd; padding-top: .45rem; color: var(--muted); font-size: .82rem; font-weight: 600; }
+nav [aria-current="step"] { border-color: var(--forest); color: var(--forest); }
+nav [data-done] { border-color: #76a65d; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 1rem; padding: clamp(1.1rem, 4vw, 2rem); }
+h2, h3, p { margin: 0 0 .7rem; }
+h2 { font-size: 1.5rem; line-height: 1.25; letter-spacing: -.02em; }
+h3 { font-size: 1.05rem; }
+p + p { margin-top: .75rem; }
+.secondary { color: var(--muted); }
+pre { background: var(--code); padding: .85rem 1rem; border-radius: .55rem; overflow-x: auto; margin: .75rem 0 1.1rem; }
+code { font-family: "IBM Plex Mono", Consolas, monospace; font-size: .92em; }
+fieldset { border: 0; padding: 0; margin: 0 0 1rem; min-width: 0; }
+legend { font-weight: 650; padding: 0; margin-bottom: .5rem; }
+.choice { display: flex; align-items: baseline; gap: .6rem; border: 1px solid var(--line); border-radius: .55rem; padding: .6rem .8rem; margin: 0 0 .38rem; cursor: pointer; }
+.choice:has(:checked) { background: #eef6e9; border-color: #649353; }
+input { accent-color: var(--forest); flex: none; margin: 0; }
+button, summary { cursor: pointer; }
+button { border: 1px solid var(--forest); border-radius: .6rem; background: var(--forest); color: #fff; padding: .68rem 1rem; font: inherit; font-weight: 650; }
+button:hover { background: #245946; }
+button.secondary-button { background: var(--surface); color: var(--forest); }
+button.secondary-button:hover { background: var(--code); }
+:focus-visible { outline: 3px solid #517a30; outline-offset: 3px; }
+article, details, .reflection { border: 1px solid var(--line); border-radius: .65rem; padding: .9rem 1rem; margin-bottom: .85rem; }
+article p:last-child, .reflection p:last-child { margin-bottom: 0; }
+summary { font-weight: 650; }
+blockquote { margin: .8rem 0; padding-left: .8rem; border-left: 3px solid #7ea765; }
+a { color: var(--forest); text-underline-offset: .15em; }
+textarea { width: 100%; min-height: 5rem; border: 1px solid #8a9e91; border-radius: .5rem; padding: .55rem .7rem; resize: vertical; font: inherit; }
+.text-label { display: block; font-weight: 650; margin: .65rem 0 .35rem; }
+.actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1rem; }
+.judgments { display: flex; flex-wrap: wrap; gap: .35rem; }
+.judgments .choice { margin: 0; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<header><div class="banner"><div class="brand" id="mode"></div><h1>Evaluating AI explanations</h1></div></header>
+<main>
+  <p id="progress" class="secondary"></p>
+  <section class="panel" id="screen" aria-labelledby="screen-title"></section>
+</main>
+<script type="application/json" id="config">{"version": "python-hci-v1", "mode": "demo", "participant_id": "WALKTHROUGH", "sequence": 1, "rounds": [{"topic": "lists", "condition": "A", "title": "List assignment", "code": "a = [1, 2, 3]\nb = a\nb.append(4)\nprint(a)", "question": "What will print(a) display?", "options": ["[1, 2, 3]", "[1, 2, 3, 4]", "[4]"], "explanation": "b = a gives b its own copy of the list, separate from a. The call b.append(4) adds 4 to the end of the list that b refers to. Since only b was modified, print(a) displays [1, 2, 3].", "claims": ["b = a gives b its own copy of the list.", "b.append(4) adds 4 to the end of the list that b refers to."], "transfer_question": "Keep the original list unchanged and include all three attendees in updated. Which line should replace the comment?", "transfer_code": "original = [\"Rina\", \"Maya\"]\n# Add one line here.\nupdated.append(\"Sam\")", "transfer_options": ["updated = original", "updated = original[:]", "updated = []"], "debrief": "Assignment gives both names the same list. print(a) displays [1, 2, 3, 4]. In the application question, updated = original[:] starts with the original names in a new outer list, so appending preserves the original."}, {"topic": "range", "condition": "B", "title": "Loop boundaries", "code": "for page in range(2, 5):\n    print(page)", "question": "Which numbers will be printed, in order?", "options": ["2, 3, 4, 5", "3, 4, 5", "2, 3, 4"], "explanation": "range(2, 5) starts at 2. The range includes its stop value, so this loop prints 2, 3, 4, and 5 in order.", "claims": ["range(2, 5) starts at 2.", "range(2, 5) includes its stop value."], "evidence": "The given end point is never part of the generated sequence.", "source": "https://docs.python.org/3/tutorial/controlflow.html#the-range-function", "transfer_question": "A report should include exactly pages 8 through 11, including both endpoints. Which expression should replace PLACEHOLDER?", "transfer_code": "for page in (PLACEHOLDER):\n    export_page(page)", "transfer_options": ["range(8, 12)", "range(8, 11)", "range(7, 11)"], "debrief": "The stop value is excluded. The loop prints 2, 3, 4. To include pages 8 through 11, use range(8, 12)."}, {"topic": "division", "condition": "C", "title": "Integer floor division", "code": "balance = -7\nprint(balance // 3)", "question": "What will Python print?", "options": ["-2", "-3", "-2.3333333333333335"], "explanation": "With two integer inputs, // returns an integer. It always drops the fractional part toward zero. Here the mathematical quotient is about -2.33, so Python prints -2.", "claims": ["With two integer inputs, // returns an integer.", "// rounds the quotient toward zero."], "evidence": "For integer operands, floor division applies the mathematical floor to the quotient. Floor is the greatest integer less than or equal to that quotient. (Paraphrase)", "source": "https://docs.python.org/3/reference/expressions.html#binary-arithmetic-operations", "transfer_question": "A map groups coordinates into tiles of width 5. Which tile number will this code assign to x = -1?", "transfer_code": "x = -1\ntile = x // 5", "transfer_options": ["0", "-2", "-1"], "debrief": "Python floors the quotient. -7 // 3 is -3, and -1 // 5 is -1. Both results round down to the next lower integer."}]}</script>
+<script>
+"use strict";
+const config = JSON.parse(document.querySelector("#config").textContent);
+const screen = document.querySelector("#screen");
+const progress = document.querySelector("#progress");
+const record = {
+  version: config.version, mode: config.mode, participant_id: config.participant_id,
+  sequence: config.sequence, rounds: []
+};
+document.querySelector("#mode").textContent =
+  config.mode === "demo" ? "Demo · practice data" : "Python learning study";
+let index = 0;
+let round;
+let response;
+let evidenceExpanded;
+
+function element(tag, content, parent, className) {
+  const node = document.createElement(tag);
+  if (content) node.textContent = content;
+  if (className) node.className = className;
+  parent.append(node);
+  return node;
+}
+
+function stage(title, label = "") {
+  screen.replaceChildren();
+  progress.textContent = label ? `Round ${index + 1} of ${config.rounds.length} · ${label}` : "";
+  const heading = element("h2", title, screen);
+  heading.id = "screen-title";
+  heading.tabIndex = -1;
+  heading.focus();
+}
+
+function codeBlock(code, parent) {
+  element("code", code, element("pre", "", parent));
+}
+
+function choices(form, name, prompt, values) {
+  const group = element("fieldset", "", form);
+  element("legend", prompt, group);
+  values.forEach((value, index) => {
+    const label = element("label", "", group, "choice");
+    const input = element("input", "", label);
+    input.type = "radio";
+    input.name = name;
+    input.value = index;
+    input.required = true;
+    element("span", value, label);
+  });
+}
+
+function writing(form, name, prompt) {
+  const label = element("label", prompt, form, "text-label");
+  label.htmlFor = name;
+  const field = element("textarea", "", form);
+  field.id = field.name = name;
+  field.required = true;
+  field.maxLength = 1000;
+  field.addEventListener("input", () => field.setCustomValidity(""));
+}
+
+function action(form, label, next) {
+  element("button", label, form);
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+    const field = form.querySelector("textarea");
+    if (field && !field.value.trim()) {
+      field.setCustomValidity("Enter a short response.");
+      field.reportValidity();
+      return;
+    }
+    next(new FormData(form));
+  });
+}
+
+function material() {
+  const article = element("article", "", screen);
+  element("h3", "AI explanation", article);
+  element("p", round.explanation, article);
+  if (round.condition === "A") return;
+  const details = element("details", "", screen);
+  details.open = evidenceExpanded;
+  const summary = element("summary", "Python documentation", details);
+  element("blockquote", round.evidence, details);
+  const link = element("a", "Read the source (opens in a new tab)", details);
+  link.href = round.source;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  summary.addEventListener("click", () => {
+    evidenceExpanded = !details.open;
+    if (evidenceExpanded) response.evidence_opened = true;
+  });
+  link.addEventListener("click", () => {
+    response.evidence_opened = true;
+    response.source_link_opened = true;
+  });
+}
+
+function predict() {
+  round = config.rounds[index];
+  response = {
+    topic: round.topic, condition: round.condition, evidence_opened: false,
+    source_link_opened: false, reflection: ""
+  };
+  evidenceExpanded = false;
+  stage(round.title, "Predict");
+  codeBlock(round.code, screen);
+  const form = element("form", "", screen);
+  choices(form, "initial", round.question, [...round.options, "Unsure"]);
+  action(form, "Review explanation", data => {
+    response.initial = Number(data.get("initial"));
+    review();
+  });
+}
+
+function review() {
+  stage("Review the explanation", "Review");
+  codeBlock(round.code, screen);
+  material();
+  const form = element("form", "", screen);
+  if (round.condition === "C") {
+    const reflection = element("div", "", form, "reflection");
+    const initial = round.options[response.initial] ?? "Unsure";
+    element("p", "Your initial answer was " + initial + ".", reflection);
+    writing(reflection, "reflection", "What does the source support or contradict? Would you change your answer? Why?");
+  }
+  action(form, "Evaluate claims", data => {
+    response.reflection = (data.get("reflection") ?? "").trim();
+    evaluate();
+  });
+}
+
+function evaluate() {
+  stage("Evaluate the claims", "Evaluate");
+  codeBlock(round.code, screen);
+  material();
+  const form = element("form", "", screen);
+  const judgments = ["accurate", "inaccurate", "unsure"];
+  round.claims.forEach((claim, number) => {
+    choices(form, `claim${number}`, claim, ["Accurate", "Inaccurate", "Unsure"]);
+  });
+  choices(form, "final", round.question + " Give your final answer.", [...round.options, "Unsure"]);
+  writing(form, "reason", "What led you to your final answer? Please leave out names and contact details.");
+  action(form, "Continue to application question", data => {
+    response.judgments = round.claims.map((_, number) => judgments[Number(data.get(`claim${number}`))]);
+    response.final = Number(data.get("final"));
+    response.reason = data.get("reason").trim();
+    transfer();
+  });
+}
+
+function transfer() {
+  stage("Apply the concept", "Apply");
+  codeBlock(round.transfer_code, screen);
+  const form = element("form", "", screen);
+  choices(form, "transfer", round.transfer_question, [...round.transfer_options, "Unsure"]);
+  action(form, index + 1 === config.rounds.length ? "Finish session" : "Next round", data => {
+    response.transfer = Number(data.get("transfer"));
+    record.rounds.push(response);
+    index += 1;
+    if (index === config.rounds.length) finish();
+    else predict();
+  });
+}
+
+function finish() {
+  stage("Session complete");
+  element("p", "Each explanation contained a deliberately inaccurate statement. Here are the corrections.", screen);
+  for (const item of config.rounds) {
+    const card = element("article", "", screen);
+    element("h3", item.title, card);
+    element("p", item.debrief, card);
+  }
+  const download = element("button", "Download response JSON", screen);
+  const status = element("p", "", screen, "secondary");
+  status.setAttribute("role", "status");
+  download.addEventListener("click", () => {
+    const url = URL.createObjectURL(new Blob([JSON.stringify(record, null, 2)], {type: "application/json"}));
+    const link = element("a", "", screen);
+    link.href = url;
+    const id = config.participant_id.replace(/[^a-zA-Z0-9_-]/g, "_");
+    link.download = `python-hci-${config.mode}-${id}.json`;
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    status.textContent = "Download requested. Check your downloads before closing this tab.";
+  });
+}
+
+stage("Three Python tasks");
+element("p", "In each round you’ll make a prediction, read an AI explanation, judge two claims, and answer a new question. Complete all three rounds in one tab and download your responses at the end.", screen);
+element("p", "The page keeps answers in memory. Reloading or closing it clears the session.", screen, "secondary");
+element("button", "Start session", screen).addEventListener("click", predict);
+</script>
+</body>
+</html>

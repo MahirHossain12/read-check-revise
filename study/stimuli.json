@@ -1,0 +1,56 @@
+{
+  "version": "python-hci-v1",
+  "topics": {
+    "lists": {
+      "title": "List assignment",
+      "code": "a = [1, 2, 3]\nb = a\nb.append(4)\nprint(a)",
+      "question": "What will print(a) display?",
+      "options": ["[1, 2, 3]", "[1, 2, 3, 4]", "[4]"],
+      "answer": 1,
+      "explanation": "b = a gives b its own copy of the list, separate from a. The call b.append(4) adds 4 to the end of the list that b refers to. Since only b was modified, print(a) displays [1, 2, 3].",
+      "claims": ["b = a gives b its own copy of the list.", "b.append(4) adds 4 to the end of the list that b refers to."],
+      "judgments": ["inaccurate", "accurate"],
+      "evidence": "When you assign a list to a variable, the variable refers to the existing list.",
+      "source": "https://docs.python.org/3/tutorial/introduction.html#lists",
+      "transfer_question": "Keep the original list unchanged and include all three attendees in updated. Which line should replace the comment?",
+      "transfer_code": "original = [\"Rina\", \"Maya\"]\n# Add one line here.\nupdated.append(\"Sam\")",
+      "transfer_options": ["updated = original", "updated = original[:]", "updated = []"],
+      "transfer_answer": 1,
+      "debrief": "Assignment gives both names the same list. print(a) displays [1, 2, 3, 4]. In the application question, updated = original[:] starts with the original names in a new outer list, so appending preserves the original."
+    },
+    "range": {
+      "title": "Loop boundaries",
+      "code": "for page in range(2, 5):\n    print(page)",
+      "question": "Which numbers will be printed, in order?",
+      "options": ["2, 3, 4, 5", "3, 4, 5", "2, 3, 4"],
+      "answer": 2,
+      "explanation": "range(2, 5) starts at 2. The range includes its stop value, so this loop prints 2, 3, 4, and 5 in order.",
+      "claims": ["range(2, 5) starts at 2.", "range(2, 5) includes its stop value."],
+      "judgments": ["accurate", "inaccurate"],
+      "evidence": "The given end point is never part of the generated sequence.",
+      "source": "https://docs.python.org/3/tutorial/controlflow.html#the-range-function",
+      "transfer_question": "A report should include exactly pages 8 through 11, including both endpoints. Which expression should replace PLACEHOLDER?",
+      "transfer_code": "for page in (PLACEHOLDER):\n    export_page(page)",
+      "transfer_options": ["range(8, 12)", "range(8, 11)", "range(7, 11)"],
+      "transfer_answer": 0,
+      "debrief": "The stop value is excluded. The loop prints 2, 3, 4. To include pages 8 through 11, use range(8, 12)."
+    },
+    "division": {
+      "title": "Integer floor division",
+      "code": "balance = -7\nprint(balance // 3)",
+      "question": "What will Python print?",
+      "options": ["-2", "-3", "-2.3333333333333335"],
+      "answer": 1,
+      "explanation": "With two integer inputs, // returns an integer. It always drops the fractional part toward zero. Here the mathematical quotient is about -2.33, so Python prints -2.",
+      "claims": ["With two integer inputs, // returns an integer.", "// rounds the quotient toward zero."],
+      "judgments": ["accurate", "inaccurate"],
+      "evidence": "For integer operands, floor division applies the mathematical floor to the quotient. Floor is the greatest integer less than or equal to that quotient. (Paraphrase)",
+      "source": "https://docs.python.org/3/reference/expressions.html#binary-arithmetic-operations",
+      "transfer_question": "A map groups coordinates into tiles of width 5. Which tile number will this code assign to x = -1?",
+      "transfer_code": "x = -1\ntile = x // 5",
+      "transfer_options": ["0", "-2", "-1"],
+      "transfer_answer": 2,
+      "debrief": "Python floors the quotient. -7 // 3 is -3, and -1 // 5 is -1. Both results round down to the next lower integer."
+    }
+  }
+}
